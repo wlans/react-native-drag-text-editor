@@ -5,7 +5,7 @@ export const useExampleContext = () => {
   const context = useContext(ExampleContext);
 
   if (context === null) {
-    throw "'useExampleContext' cannot be used out of the RNDT!";
+    throw "'useExampleContext' cannot be used out of the Example!";
   }
   
   return context;
