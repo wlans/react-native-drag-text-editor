@@ -40,7 +40,7 @@ const RotationSnapPoint: FC<rotationComponentPropTypes> = ({
 
   const rotateHandler = useAnimatedGestureHandler({
     onStart: (_ev: any, ctx: any) => {
-      runOnJS(Keyboard.dismiss)();
+      Keyboard.dismiss();
       ctx.centers = getCenters(internals);
     },
     onActive: (_ev, ctx) => {
