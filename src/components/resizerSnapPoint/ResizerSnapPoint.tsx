@@ -50,7 +50,7 @@ const ResizerSnapPoint: FC<ResizerSnapPointProps> = ({ side }) => {
   const resizeHandler = useAnimatedGestureHandler(
     {
       onStart: (_ev: any, ctx: any) => {
-        runOnJS(onStartRoutine)
+        runOnJS(onStartRoutine)()
         ctx.boxW = boxWidth.value + textInputLayoutOffset;
         ctx.startX = x.value;
         ctx.startY = y.value;
