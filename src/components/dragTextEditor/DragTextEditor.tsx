@@ -114,6 +114,7 @@ const DragText = forwardRef(
         blurOnSubmit,
         value,
         onBlur,
+        onDragHandler
       }),
       [
         resizerSnapPoints,
@@ -127,6 +128,7 @@ const DragText = forwardRef(
         blurOnSubmit,
         value,
         onBlur,
+        onDragHandler
       ]
     );
 
