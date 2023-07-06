@@ -52,6 +52,7 @@ const DragText = forwardRef(
       onBlur,
       onItemActive,
       onDragHandler,
+      onEndHandler,
     }: DragTextPropTypes,
     ref: Ref<DragTextRef>
   ) => {
@@ -88,9 +89,11 @@ const DragText = forwardRef(
           x.value = ctx.startX + _ev.translationX;
         }
       },
-      onEnd: () => {
+      onEnd: _ev => {
+
         runOnJS(onEndRoutine)();
         borderStatus.value = false;
+        runOnJS(onEndHandler)(_ev);
       },
     });
 
@@ -114,7 +117,8 @@ const DragText = forwardRef(
         blurOnSubmit,
         value,
         onBlur,
-        onDragHandler
+        onDragHandler,
+        onEndHandler,
       }),
       [
         resizerSnapPoints,
@@ -128,7 +132,8 @@ const DragText = forwardRef(
         blurOnSubmit,
         value,
         onBlur,
-        onDragHandler
+        onDragHandler,
+        onEndHandler
       ]
     );
 
@@ -147,7 +152,7 @@ const DragText = forwardRef(
 
     useEffect(() => {
       runOnJS(onDragHandler)({ x: x.value, y: y.value });
-    }, [x, y, onDragHandler]);
+    }, [x.value, y.value, onDragHandler]);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
