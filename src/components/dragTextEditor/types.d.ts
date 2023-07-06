@@ -26,11 +26,7 @@ export interface DragTextPropTypes {
    * @type boolean | undefined
    */
 
-  onDragHandler: (e) => void;
-  /**
-   * Custom onDragFunction
-   * @type Function
-   */
+  onDragHandler: (e: any) => void;
   visible?: boolean;
   /**
    * Custom corner component props

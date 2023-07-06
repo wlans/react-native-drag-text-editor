@@ -1,23 +1,23 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {useAnimatedStyle, useSharedValue} from 'react-native-reanimated';
-import {DragTextEditor, DragTextRef} from 'react-native-drag-text-editor';
-import {ExampleContextProvider} from './context/ExampleContextProvider';
-import {Editor, IconButton} from './components';
-import {defaultTextConfig, ICONS} from './constants';
-import {DragTextArrayProps} from './types.d';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import { DragTextEditor, DragTextRef } from 'react-native-drag-text-editor';
+import { ExampleContextProvider } from './context/ExampleContextProvider';
+import { Editor, IconButton } from './components';
+import { defaultTextConfig, ICONS } from './constants';
+import { DragTextArrayProps } from './types.d';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const App = () => {
   const [texts, addText] = useState<DragTextArrayProps[]>([
-    {key: 0, ...defaultTextConfig},
+    { key: 0, ...defaultTextConfig },
   ]);
   const DragTextEditorRef = useRef<DragTextRef | any>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [textValue, onChangeText] = useState(texts[activeIndex].text);
   const sharedSliderValue = useSharedValue<number>(texts[activeIndex].fontSize);
 
-  const DefaultTextConfig = {key: texts.length, ...defaultTextConfig};
+  const DefaultTextConfig = { key: texts.length, ...defaultTextConfig };
 
   const editTextsArray = useCallback(
     (prop: string, value: number | boolean | string) => {
@@ -70,7 +70,7 @@ const App = () => {
       if (index == activeIndex) {
         return animatedTextStyle;
       } else {
-        return {fontSize: texts[index].fontSize};
+        return { fontSize: texts[index].fontSize };
       }
     },
     [texts, animatedTextStyle, activeIndex],
@@ -118,9 +118,9 @@ const App = () => {
               resizerSnapPoints={_resizerSnapPoints}
               rotationComponent={_rotateComponent}
               externalTextStyles={[
-                {color: item.color},
+                { color: item.color },
                 activeStyleHandler(index),
-              ]}></DragTextEditor>
+              ]} />
           ))}
         </View>
         <Editor
