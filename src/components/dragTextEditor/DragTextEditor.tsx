@@ -51,7 +51,7 @@ const DragText = forwardRef(
       onChangeText,
       onBlur,
       onItemActive,
-      onDragHandler
+      onDragHandler,
     }: DragTextPropTypes,
     ref: Ref<DragTextRef>
   ) => {
