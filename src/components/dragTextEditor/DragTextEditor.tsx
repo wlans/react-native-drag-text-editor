@@ -6,6 +6,7 @@ import React, {
   useImperativeHandle,
   useMemo,
   useState,
+  useEffect
 } from 'react';
 import { Keyboard, StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, {
@@ -34,7 +35,7 @@ import CornerComponent from '../cornerComponent/CornerComponent';
 import { CornerComponentProps } from '../cornerComponent/types.d';
 import { DragTextPropTypes, DragTextRef } from './types';
 
-const DragText= forwardRef(
+const DragText = forwardRef(
   (
     {
       rotationComponent,
@@ -50,7 +51,8 @@ const DragText= forwardRef(
       onChangeText,
       onBlur,
       onItemActive,
-    }:DragTextPropTypes,
+      onDragHandler
+    }: DragTextPropTypes,
     ref: Ref<DragTextRef>
   ) => {
     const x = useSharedValue<number>(defX);
@@ -62,6 +64,7 @@ const DragText= forwardRef(
     const isResize = useSharedValue<boolean>(false);
     const borderStatus = useSharedValue<boolean>(true);
     const textInputLayout = textInputLayoutDefaults;
+
 
     const onStartRoutine = () => {
       Keyboard.dismiss();
@@ -139,6 +142,10 @@ const DragText= forwardRef(
       }),
       [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
     );
+
+    useEffect(() => {
+      onDragHandler(internalContextVariables);
+    }, [internalContextVariables, onDragHandler]);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
