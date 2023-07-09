@@ -93,7 +93,7 @@ const DragText = forwardRef(
 
         runOnJS(onEndRoutine)();
         borderStatus.value = false;
-        runOnJS(onEndHandler)(_ev);
+        runOnJS(onEndHandler)(internalContextVariables);
       },
     });
 
