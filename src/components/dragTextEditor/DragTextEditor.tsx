@@ -79,28 +79,17 @@ const DragText = forwardRef(
 
     const internalContextVariables = useMemo(
       () => ({
-        x: x.value,
-        y: y.value,
-        boxWidth: boxWidth.value,
-        rotationAngle: rotationAngle.value,
-        isResize: isResize.value,
-        textInputLayout,
-        borderStatus: borderStatus.value,
-      }),
-      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
-    );
-
-    useEffect(() => {
-      onEndHandler({
-        x,
+       x,
         y,
         boxWidth,
         rotationAngle,
         isResize,
         textInputLayout,
         borderStatus,
-      })
-    }, [x.value, y, boxWidth.value, isResize.value, textInputLayout, rotationAngle.value, borderStatus.value])
+      }),
+      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
+    );
+
 
     
 
@@ -166,8 +155,14 @@ const DragText = forwardRef(
     );
 
     useEffect(() => {
-      runOnJS(onDragHandler)({ x: x.value, y: y.value });
-    }, [x.value, y.value, onDragHandler]);
+      runOnJS(onDragHandler)({  x: x.value,
+        y: y.value,
+        boxWidth: boxWidth.value,
+        rotationAngle: rotationAngle.value,
+        isResize: isResize.value,
+        textInputLayout,
+        borderStatus: borderStatus.value,});
+    }, [x.value, y.value, boxWidth.value, isResize.value, textInputLayout, rotationAngle.value, borderStatus.value, onDragHandler]);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
