@@ -91,7 +91,7 @@ const DragText = forwardRef(
     );
 
     useEffect(() => {
-      runOnJS(onEndHandler)(internalContextVariables);
+      onEndHandler(internalContextVariables)
     }, [internalContextVariables])
     
 
