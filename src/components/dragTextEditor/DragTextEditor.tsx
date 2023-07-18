@@ -92,7 +92,7 @@ const DragText = forwardRef(
 
     useEffect(() => {
       onEndHandler(internalContextVariables)
-    }, [internalContextVariables])
+    }, [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus])
     
 
 
