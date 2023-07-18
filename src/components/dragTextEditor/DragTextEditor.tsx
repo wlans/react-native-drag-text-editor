@@ -87,7 +87,7 @@ const DragText = forwardRef(
         textInputLayout,
         borderStatus: borderStatus.value,
       }),
-      [x.value, y, boxWidth.value, isResize.value, textInputLayout, rotationAngle.value, borderStatus.value]
+      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
     );
 
     useEffect(() => {
@@ -100,7 +100,8 @@ const DragText = forwardRef(
         textInputLayout,
         borderStatus,
       })
-    }, [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus])
+    }, [x.value, y, boxWidth.value, isResize.value, textInputLayout, rotationAngle.value, borderStatus.value])
+
     
 
 
