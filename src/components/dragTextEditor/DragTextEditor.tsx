@@ -76,6 +76,21 @@ const DragText = forwardRef(
       _setInputCoverZIndex(defInputCoverZIndex);
     };
 
+
+    const internalContextVariables = useMemo(
+      () => ({
+        x,
+        y,
+        boxWidth,
+        rotationAngle,
+        isResize,
+        textInputLayout,
+        borderStatus,
+      }),
+      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
+    );
+
+
     const dragHandler = useAnimatedGestureHandler({
       onStart: (_ev: any, ctx: any) => {
         runOnJS(onStartRoutine)();
@@ -135,19 +150,6 @@ const DragText = forwardRef(
         onDragHandler,
         onEndHandler
       ]
-    );
-
-    const internalContextVariables = useMemo(
-      () => ({
-        x,
-        y,
-        boxWidth,
-        rotationAngle,
-        isResize,
-        textInputLayout,
-        borderStatus,
-      }),
-      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
     );
 
     useEffect(() => {
