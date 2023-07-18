@@ -90,6 +90,11 @@ const DragText = forwardRef(
       [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
     );
 
+    useEffect(() => {
+      runOnJS(onEndHandler)(internalContextVariables);
+    }, [internalContextVariables])
+    
+
 
     const dragHandler = useAnimatedGestureHandler({
       onStart: (_ev: any, ctx: any) => {
@@ -108,7 +113,6 @@ const DragText = forwardRef(
 
         runOnJS(onEndRoutine)();
         borderStatus.value = false;
-        runOnJS(onEndHandler)(internalContextVariables);
       },
     });
 
