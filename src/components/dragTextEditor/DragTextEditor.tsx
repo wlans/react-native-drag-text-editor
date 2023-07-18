@@ -105,6 +105,13 @@ const DragText = forwardRef(
         if (borderStatus.value) {
           y.value = ctx.startY + _ev.translationY;
           x.value = ctx.startX + _ev.translationX;
+          runOnJS(onDragHandler)({  x: x.value,
+            y: y.value,
+            boxWidth: boxWidth.value,
+            rotationAngle: rotationAngle.value,
+            isResize: isResize.value,
+            textInputLayout,
+            borderStatus: borderStatus.value,});
         }
       },
       onEnd: _ev => {
