@@ -79,15 +79,15 @@ const DragText = forwardRef(
 
     const internalContextVariables = useMemo(
       () => ({
-        x,
-        y,
-        boxWidth,
-        rotationAngle,
-        isResize,
+        x: x.value,
+        y: y.value,
+        boxWidth: boxWidth.value,
+        rotationAngle: rotationAngle.value,
+        isResize: isResize.value,
         textInputLayout,
-        borderStatus,
+        borderStatus: borderStatus.value,
       }),
-      [x, y, boxWidth, isResize, textInputLayout, rotationAngle, borderStatus]
+      [x.value, y, boxWidth.value, isResize.value, textInputLayout, rotationAngle.value, borderStatus.value]
     );
 
     useEffect(() => {
