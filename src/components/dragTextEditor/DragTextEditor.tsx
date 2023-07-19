@@ -168,7 +168,7 @@ const DragText = forwardRef(
         rotationAngle: rotationAngle.value,
         isResize: isResize.value,
         borderStatus: borderStatus.value,});
-    }, [x.value, y.value, boxWidth.value, isResize.value, rotationAngle.value, borderStatus.value, onDragHandler]);
+    }, [x, y, boxWidth, isResize, rotationAngle, borderStatus, onDragHandler]);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
