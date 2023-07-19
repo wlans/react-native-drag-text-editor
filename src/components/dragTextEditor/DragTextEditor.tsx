@@ -162,7 +162,7 @@ const DragText = forwardRef(
     );
 
     useEffect(() => {
-      runOnJS(onDragHandler)({  x: x.value,
+      onDragHandler({  x: x.value,
         y: y.value,
         boxWidth: boxWidth.value,
         rotationAngle: rotationAngle.value,
