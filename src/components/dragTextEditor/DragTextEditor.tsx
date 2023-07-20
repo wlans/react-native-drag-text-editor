@@ -14,6 +14,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   runOnJS,
+  useDerivedValue,
 } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import RotationSnapPoint from '../rotationSnapPoint/RotationSnapPoint';
@@ -157,6 +158,11 @@ const DragText = forwardRef(
     useEffect(() => {
       onDragHandler(internalContextVariables);
     }, [x,y, onDragHandler]);
+
+
+useDerivedValue(() => {
+  onDragHandler({x: x.value, y: y.value, boxWidth: boxWidth.value});
+}, []);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
