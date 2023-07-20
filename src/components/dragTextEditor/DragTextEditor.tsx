@@ -155,13 +155,10 @@ const DragText = forwardRef(
       ]
     );
 
-    useEffect(() => {
-      onDragHandler(internalContextVariables);
-    }, [x,y, onDragHandler]);
 
 
 useDerivedValue(() => {
-  onDragHandler({x: x.value, y: y.value, boxWidth: boxWidth.value});
+  runOnJS(onDragHandler)({x: x.value, y: y.value, boxWidth: boxWidth.value});
 }, []);
 
     const animatedDragStyles = useAnimatedStyle(
