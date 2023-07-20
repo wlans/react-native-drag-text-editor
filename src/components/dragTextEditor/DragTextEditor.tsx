@@ -104,6 +104,7 @@ const DragText = forwardRef(
       onActive: (_ev: any, ctx: any) => {
         if (borderStatus.value) {
           y.value = ctx.startY + _ev.translationY;
+          x.value = ctx.startX + _ev.translationX;
         }
       },
       onEnd: _ev => {
@@ -155,7 +156,7 @@ const DragText = forwardRef(
 
     useEffect(() => {
       onDragHandler(internalContextVariables);
-    }, [internalContextVariables, onDragHandler]);
+    }, [x,y, onDragHandler]);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
