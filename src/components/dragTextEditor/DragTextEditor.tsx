@@ -158,7 +158,7 @@ const DragText = forwardRef(
 
 
 useDerivedValue(() => {
-  runOnJS(onDragHandler)({x: x.value, y: y.value, boxWidth: boxWidth.value});
+  runOnJS(onDragHandler)({x: x.value, y: y.value, boxWidth: boxWidth.value, rotationAngle: rotationAngle.value});
 }, []);
 
     const animatedDragStyles = useAnimatedStyle(
