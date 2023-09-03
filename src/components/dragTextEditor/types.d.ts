@@ -11,11 +11,18 @@ export interface DragTextRef {
   setBorderStatus: (value: boolean) => void;
 }
 
+export type ValueProps = {
+  text: string;
+  x: number;
+  y: number;
+  boxWidth: number;
+};
+
 export interface DragTextPropTypes {
   // TextInput Types
   onChangeText?: ((text: string) => void) | undefined;
   blurOnSubmit?: boolean | undefined;
-  value?: string | undefined;
+  value?: ValueProps | undefined;
   onBlur?:
     | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
     | undefined;
