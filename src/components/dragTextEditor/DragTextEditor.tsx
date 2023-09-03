@@ -57,9 +57,9 @@ const DragText = forwardRef(
     }: DragTextPropTypes,
     ref: Ref<DragTextRef>
   ) => {
-    const x = useSharedValue<number>(value?.x || defX);
-    const y = useSharedValue<number>(value?.y || defY);
-    const boxWidth = useSharedValue<number>(value?.boxWidth || defBoxWidth);
+    const x = useSharedValue<number>(defX);
+    const y = useSharedValue<number>(defY);
+    const boxWidth = useSharedValue<number>(defBoxWidth);
     const rotationAngle = useSharedValue<number>(defRotationAngle);
     const [inputCoverZIndex, _setInputCoverZIndex] =
       useState(defInputCoverZIndex);
@@ -80,7 +80,7 @@ const DragText = forwardRef(
 
     const internalContextVariables = useMemo(
       () => ({
-        x,
+       x,
         y,
         boxWidth,
         rotationAngle,
@@ -92,7 +92,7 @@ const DragText = forwardRef(
     );
 
 
-
+    
 
 
     const dragHandler = useAnimatedGestureHandler({
@@ -157,9 +157,9 @@ const DragText = forwardRef(
 
 
 
-    useDerivedValue(() => {
-      runOnJS(onDragHandler)({ x: x.value, y: y.value, boxWidth: boxWidth.value, rotationAngle: rotationAngle.value });
-    }, []);
+useDerivedValue(() => {
+  runOnJS(onDragHandler)({x: x.value, y: y.value, boxWidth: boxWidth.value, rotationAngle: rotationAngle.value});
+}, []);
 
     const animatedDragStyles = useAnimatedStyle(
       () => ({
