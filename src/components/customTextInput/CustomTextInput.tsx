@@ -24,7 +24,7 @@ const CustomTextInput: FC = () => {
         onChangeText={onChangeText}
         onBlur={onBlur}
         blurOnSubmit={blurOnSubmit}
-        value={value}
+        value={value?.text}
         multiline
         underlineColorAndroid="transparent"
         defaultValue={defaultTextValue}
