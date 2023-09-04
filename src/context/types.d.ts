@@ -1,6 +1,7 @@
 import Animated from 'react-native-reanimated';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { SIDES } from '../constants';
+import { ValueProps } from 'src/components/dragTextEditor/types';
 type textInputLayoutTypes = {
   height: number;
   width: number;
@@ -15,7 +16,7 @@ export interface RNDTExternalContextVariables {
   defaultTextValue?: string;
   blurOnSubmit?: boolean | undefined;
   placeholder?: string;
-  value?: string | undefined;
+  value?: ValueProps;
   /**
    * Resizer Snap Points [ 'left', 'right', 'top', 'bottom' ]
    * @type Array<SIDES>
